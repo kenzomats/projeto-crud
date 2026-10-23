@@ -16,6 +16,13 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
 });
 
+app.use(express.json()) //interpretar o json da requisicao
+// rota para gerenciar os usuarios (crud)
+const apiRoutes = require(('./routes/api'));
+app.use('/api/users', apiRoutes);
+
+
+
 app.listen(port, ()=>{
     console.log("Servidor funcionando")
 });
